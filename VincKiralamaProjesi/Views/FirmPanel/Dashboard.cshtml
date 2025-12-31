@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Hoş geldiniz</h2>
+<p><strong>Firma:</strong> @ViewBag.FirmName</p>
+
+<div class="mt-3">
+    <a class="btn btn-primary me-2" asp-action="MyCranes">Vinçlerim</a>
+    <a class="btn btn-outline-primary" asp-action="MyQuotes">Gelen Teklifler</a>
+</div>

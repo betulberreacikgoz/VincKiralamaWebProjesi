@@ -1,0 +1,80 @@
+@model IEnumerable<VincKiralamaProjesi.Models.Firm>
+
+@{
+    ViewData["Title"] = "Firmalar (Admin)";
+}
+
+@if (TempData["MailMsg"] != null)
+{
+    <div class="alert alert-info">@TempData["MailMsg"]</div>
+}
+
+<h2>Firma Başvuruları</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info mt-3">
+        Henüz hiç firma başvurusu bulunmuyor.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-sm mt-3">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Şehir / İlçe</th>
+                <th>Telefon</th>
+                <th>E-posta</th>
+                <th>Kayıt Tarihi</th>
+                <th>Onay Durumu</th>
+                <th>Anahtar</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.Name</td>
+                <td>@f.City @(" / ") @f.District</td>
+                <td>@f.Phone</td>
+                <td>@f.Email</td>
+                <td>@f.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>
+                    @if (f.IsApproved)
+                    {
+                        <span class="badge bg-success">Onaylı</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Beklemede</span>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(f.FirmKey))
+                    {
+                        <code>@f.FirmKey</code>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Henüz yok</span>
+                    }
+                </td>
+                <td>
+                    @if (!f.IsApproved)
+                    {
+                        <a asp-action="Approve" asp-route-id="@f.Id" class="btn btn-sm btn-success">
+                            Onayla ve Anahtar Oluştur
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Onaylanmış</span>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

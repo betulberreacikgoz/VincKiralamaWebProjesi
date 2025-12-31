@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Firma Girişi";
+}
+
+<h2>Firma Girişi</h2>
+
+<p class="text-muted">Admin tarafından verilen <strong>Firma Anahtarı</strong> ile giriş yapın.</p>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post" asp-action="Login">
+    <div class="mb-3">
+        <label class="form-label">Firma Anahtarı</label>
+        <input class="form-control" name="firmKey" />
+    </div>
+    <button class="btn btn-primary" type="submit">Giriş Yap</button>
+</form>

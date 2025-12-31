@@ -1,0 +1,114 @@
+@model VincKiralamaProjesi.Models.Crane
+
+@{
+    ViewData["Title"] = "Vinç Düzenle";
+    var categories = ViewBag.Categories as List<VincKiralamaProjesi.Models.Category>;
+}
+
+<h2>Vinç Düzenle</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="EditCrane" method="post">
+            <input type="hidden" asp-for="Id" />
+            
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label">Kategori</label>
+                <select asp-for="CategoryId" class="form-select">
+                    <option value="">Kategori Seçiniz</option>
+                    @if (categories != null)
+                    {
+                        foreach (var cat in categories)
+                        {
+                            <option value="@cat.Id">@cat.Name</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Vinç Adı / Model</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="CapacityTon" class="form-label">Kapasite (Ton)</label>
+                    <input asp-for="CapacityTon" class="form-control" type="number" min="1" />
+                    <span asp-validation-for="CapacityTon" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="DailyPrice" class="form-label">Günlük Fiyat (TL)</label>
+                    <input asp-for="DailyPrice" class="form-control" type="number" min="0" />
+                    <span asp-validation-for="DailyPrice" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ImageUrl" class="form-label">Resim URL (Opsiyonel)</label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="https://..." />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="City" class="form-label">Şehir</label>
+                    <select asp-for="City" class="form-select" id="citySelect">
+                        <option value="">Seçiniz...</option>
+                    </select>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="District" class="form-label">İlçe</label>
+                    <select asp-for="District" class="form-select" id="districtSelect">
+                        <option value="">Önce Şehir Seçiniz...</option>
+                    </select>
+                    <span asp-validation-for="District" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Açıklama</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Güncelle</button>
+            <a asp-action="MyCranes" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/locations.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            initLocationSelectors("citySelect", "districtSelect");
+            
+            // Mevcut şehir ve ilçeyi seçili hale getir
+            var currentCity = "@Model.City";
+            var currentDistrict = "@Model.District";
+            
+            if (currentCity) {
+                var citySelect = document.getElementById("citySelect");
+                citySelect.value = currentCity;
+                // Tetikle ki ilçeler dolsun
+                var event = new Event('change');
+                citySelect.dispatchEvent(event);
+                
+                // İlçeyi seç
+                setTimeout(function() {
+                    var districtSelect = document.getElementById("districtSelect");
+                    if(districtSelect && currentDistrict) {
+                        districtSelect.value = currentDistrict;
+                    }
+                }, 100);
+            }
+        });
+    </script>
+}

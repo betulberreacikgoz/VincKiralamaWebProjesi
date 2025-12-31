@@ -1,0 +1,132 @@
+@model VincKiralamaProjesi.ViewModels.QuoteRequestViewModel
+
+@{
+    ViewData["Title"] = "Teklif Al";
+}
+
+<h2>Teklif Al</h2>
+<p class="text-muted">Lütfen aşağıdaki formu doldurun, size en uygun vinç için teklif iletelim.</p>
+
+<form asp-action="Create" method="post" class="mt-4">
+    <div class="row">
+        <!-- A) İş Türü -->
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Ne tür bir iş yapılacak?</label>
+            <select asp-for="JobType" class="form-select">
+                <option value="">Seçiniz...</option>
+                <option>Cam silme / dış cephe</option>
+                <option>Eşya / makine taşıma</option>
+                <option>Çatı / klima montajı</option>
+                <option>İnşaat kalıp / beton</option>
+                <option>Reklam tabelası montajı</option>
+                <option>Ağaç kesimi / peyzaj</option>
+                <option>Diğer</option>
+            </select>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="JobDescription" class="form-label">İş açıklaması (opsiyonel)</label>
+            <textarea asp-for="JobDescription" class="form-control" rows="2"
+                      placeholder="Örn: 5. kat cam değişimi, bina önü dar sokak..."></textarea>
+        </div>
+
+        <!-- B) Konum -->
+        <div class="col-md-4 mb-3">
+            <label asp-for="City" class="form-label">Şehir</label>
+            <select asp-for="City" class="form-select" id="citySelect">
+                <option value="">Seçiniz...</option>
+            </select>
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label asp-for="District" class="form-label">İlçe</label>
+            <select asp-for="District" class="form-select" id="districtSelect">
+                <option value="">Önce Şehir Seçiniz...</option>
+            </select>
+            <span asp-validation-for="District" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">İş alanı türü</label>
+            <select asp-for="SiteType" class="form-select">
+                <option value="">Seçiniz...</option>
+                <option>Dar sokak</option>
+                <option>Cadde üstü</option>
+                <option>Şantiye alanı</option>
+                <option>Fabrika / depo içi</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Araç yaklaşma durumu</label>
+            <select asp-for="AccessType" class="form-select">
+                <option value="">Seçiniz...</option>
+                <option>Bina dibine kadar yaklaşabilir</option>
+                <option>5-10 metre mesafede durabilir</option>
+                <option>Daha uzak, sadece sepet uzanacak</option>
+            </select>
+        </div>
+
+        <!-- C) Teknik ihtiyaç -->
+        <div class="col-md-3 mb-3">
+            <label asp-for="HeightMeters" class="form-label">Çalışma yüksekliği (m)</label>
+            <input asp-for="HeightMeters" class="form-control" type="number" min="1" />
+        </div>
+        <div class="col-md-3 mb-3">
+            <label asp-for="LoadWeightKg" class="form-label">Yük ağırlığı (kg)</label>
+            <input asp-for="LoadWeightKg" class="form-control" type="number" min="0" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Duration" class="form-label">İş süresi</label>
+            <select asp-for="Duration" class="form-select">
+                <option value="">Seçiniz...</option>
+                <option>1 gün</option>
+                <option>2-3 gün</option>
+                <option>1 hafta</option>
+                <option>1 haftadan uzun</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="JobStartDate" class="form-label">İşin Yapılacağı Tarih</label>
+            <input asp-for="JobStartDate" class="form-control" type="date" 
+                   min="@DateTime.Now.ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <!-- D) Müşteri bilgileri -->
+        <div class="col-md-6 mb-3">
+            <label asp-for="CustomerName" class="form-label">Ad Soyad</label>
+            <input asp-for="CustomerName" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Phone" class="form-label">Telefon</label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Email" class="form-label">E-posta (opsiyonel)</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="CompanyName" class="form-label">Firma adı (opsiyonel)</label>
+            <input asp-for="CompanyName" class="form-control" />
+        </div>
+        <div class="col-12 mb-3">
+            <label asp-for="Notes" class="form-label">Ek notlar</label>
+            <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="col-12 mt-2">
+            <button type="submit" class="btn btn-warning text-dark fw-semibold">
+                Teklif Al
+            </button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/locations.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            initLocationSelectors("citySelect", "districtSelect");
+        });
+    </script>
+}

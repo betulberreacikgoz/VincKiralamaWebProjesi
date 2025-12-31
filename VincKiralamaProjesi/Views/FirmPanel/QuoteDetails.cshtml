@@ -1,0 +1,126 @@
+@model VincKiralamaProjesi.Models.QuoteRequest
+
+@{
+    ViewData["Title"] = "Teklif Detayı";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Teklif Detayı #@Model.Id</h2>
+        <a asp-action="MyQuotes" class="btn btn-secondary">&larr; Listeye Dön</a>
+    </div>
+
+    <div class="row">
+        <!-- Sol Kolon: Müşteri ve İletişim -->
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Müşteri Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Ad Soyad</dt>
+                        <dd class="col-sm-8">@Model.CustomerName</dd>
+
+                        <dt class="col-sm-4">Telefon</dt>
+                        <dd class="col-sm-8">
+                            <a href="tel:@Model.Phone" class="text-decoration-none">@Model.Phone</a>
+                        </dd>
+
+                        <dt class="col-sm-4">E-posta</dt>
+                        <dd class="col-sm-8">
+                            @if (!string.IsNullOrEmpty(Model.Email))
+                            {
+                                <a href="mailto:@Model.Email">@Model.Email</a>
+                            }
+                            else
+                            {
+                                <span class="text-muted">-</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Firma Adı</dt>
+                        <dd class="col-sm-8">@(Model.CompanyName ?? "-")</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">İşin Konumu ve Zamanı</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Tarih</dt>
+                        <dd class="col-sm-8">@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+                        
+                        <dt class="col-sm-4">Başlangıç</dt>
+                        <dd class="col-sm-8 text-danger fw-bold">
+                             @Model.JobStartDate.ToString("dd.MM.yyyy")
+                        </dd>
+
+                        <dt class="col-sm-4">Konum</dt>
+                        <dd class="col-sm-8">@Model.City / @Model.District</dd>
+
+                        <dt class="col-sm-4">İş Süresi</dt>
+                        <dd class="col-sm-8">@Model.Duration</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ Kolon: İş Detayları ve Teknik Özellikler -->
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">İş ve Saha Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">İş Türü</dt>
+                        <dd class="col-sm-8">@Model.JobType</dd>
+
+                        <dt class="col-sm-4">İş Alanı</dt>
+                        <dd class="col-sm-8">@Model.SiteType</dd>
+
+                        <dt class="col-sm-4">Yanaşma</dt>
+                        <dd class="col-sm-8">@Model.AccessType</dd>
+                        
+                        <dt class="col-sm-4">Açıklama</dt>
+                        <dd class="col-sm-8">@(Model.JobDescription ?? "-")</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Teknik Gereksinimler</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <h3 class="text-primary display-6">@Model.HeightMeters m</h3>
+                            <small class="text-muted">Gerekli Yükseklik</small>
+                        </div>
+                        <div class="col-6 border-start">
+                            <h3 class="text-success display-6">@Model.LoadWeightKg kg</h3>
+                            <small class="text-muted">Yük Ağırlığı</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Notes))
+            {
+                <div class="alert alert-secondary">
+                    <strong>Müşteri Notu:</strong><br />
+                    @Model.Notes
+                </div>
+            }
+            
+            <div class="alert alert-success">
+                <strong>Atanan Vinç:</strong> @(Model.Crane?.Name ?? "Silinmiş Vinç")
+            </div>
+        </div>
+    </div>
+</div>

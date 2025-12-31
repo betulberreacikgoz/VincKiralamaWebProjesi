@@ -1,0 +1,39 @@
+@model IEnumerable<VincKiralamaProjesi.Models.Crane>
+
+@{
+    ViewData["Title"] = "Vinç Listesi";
+}
+
+<h1>Vinç Listesi</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Kategori</th>
+            <th>Firma</th>
+            <th>Ad</th>
+            <th>Tonaj</th>
+            <th>Şehir / İlçe</th>
+            <th>Günlük Fiyat (₺)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Category?.Name</td>
+            <td>@item.Firm?.Name</td>
+            <td>@item.Name</td>
+            <td>@item.CapacityTon</td>
+            <td>@item.City @(" / ") @item.District</td>
+            <td>@item.DailyPrice</td>
+            <td>
+                <a asp-controller="Cranes" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                    Detay
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

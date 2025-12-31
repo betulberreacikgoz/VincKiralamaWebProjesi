@@ -1,0 +1,70 @@
+@model VincKiralamaProjesi.Models.Crane
+@{
+    ViewData["Title"] = "Vinç Ekle";
+    var categories = ViewBag.Categories as List<VincKiralamaProjesi.Models.Category>;
+}
+
+<h2>Vinç Ekle</h2>
+
+<form asp-action="CreateCrane" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label class="form-label">Ad</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kategori</label>
+        <select class="form-select" asp-for="CategoryId">
+            @foreach (var cat in categories)
+            {
+                <option value="@cat.Id">@cat.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Kapasite (Ton)</label>
+            <input class="form-control" asp-for="CapacityTon" />
+            <span asp-validation-for="CapacityTon" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Günlük Fiyat</label>
+            <input class="form-control" asp-for="DailyPrice" />
+            <span asp-validation-for="DailyPrice" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Açıklama</label>
+        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Resim URL</label>
+        <input class="form-control" asp-for="ImageUrl" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Şehir</label>
+            <input class="form-control" asp-for="City" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">İlçe</label>
+            <input class="form-control" asp-for="District" />
+            <span asp-validation-for="District" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Kaydet</button>
+    <a class="btn btn-secondary" asp-action="MyCranes">İptal</a>
+</form>

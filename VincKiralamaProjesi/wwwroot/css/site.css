@@ -1,0 +1,236 @@
+/* ====== GOOGLE FONTS ====== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #FFC107;
+    /* Amber 500 */
+    --primary-hover: #FFB300;
+    --dark-bg: #111827;
+    /* Gray 900 */
+    --dark-surface: #1F2937;
+    /* Gray 800 */
+    --light-bg: #F9FAFB;
+    /* Gray 50 */
+    --text-main: #1F2937;
+    /* Gray 800 */
+    --text-muted: #6B7280;
+    /* Gray 500 */
+    --accent-red: #EF4444;
+    /* Red 500 */
+}
+
+/* ====== GLOBAL STYLES ====== */
+html,
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    color: var(--dark-bg);
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* ====== NAVBAR ====== */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--dark-bg) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-main) !important;
+    margin-right: 1rem;
+}
+
+.nav-link:hover {
+    color: var(--primary-hover) !important;
+}
+
+/* ====== BUTTONS ====== */
+.btn-primary {
+    background-color: var(--dark-bg);
+    border-color: var(--dark-bg);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #000;
+    border-color: #000;
+}
+
+.btn-warning {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-bg);
+    font-weight: 700;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.btn-warning:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+/* ====== CAROUSEL / HERO ====== */
+.hero-carousel {
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item {
+    height: 600px;
+}
+
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    /* Metin okunurluğu için karartma */
+}
+
+.carousel-caption {
+    bottom: 30%;
+    text-align: left;
+    left: 10%;
+    right: 10%;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: #f8f9fa;
+}
+
+/* ====== CARDS ====== */
+.card {
+    border: none;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+/* ====== FOOTER TASARIMI ====== */
+.footer-dark {
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.text-footer-muted {
+    color: #9CA3AF;
+}
+
+.footer-brand-badge {
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-bg);
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--dark-surface);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+}
+
+.footer-social a:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+}
+
+/* ====== UTILITIES ====== */
+.bg-light-yellow {
+    background-color: #FFFBEB;
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}

@@ -1,0 +1,63 @@
+@model VincKiralamaProjesi.Models.QuoteRequest
+
+@{
+    ViewData["Title"] = "Teklif Detayı";
+}
+
+<h2>Teklif Detayı</h2>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h5 class="card-title">
+            @Model.CustomerName (@Model.Phone)
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            @Model.City @(" / ") @Model.District – @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")
+        </h6>
+
+        <hr />
+
+        <h6>İş Bilgileri</h6>
+        <p><strong>İş Türü:</strong> @Model.JobType</p>
+        @if (!string.IsNullOrWhiteSpace(Model.JobDescription))
+        {
+            <p><strong>İş Açıklaması:</strong> @Model.JobDescription</p>
+        }
+
+        <p><strong>İş Alanı Türü:</strong> @Model.SiteType</p>
+        <p><strong>Araç Yaklaşma Durumu:</strong> @Model.AccessType</p>
+
+        <p>
+            <strong>Çalışma Yüksekliği:</strong>
+            @(Model.HeightMeters.HasValue ? Model.HeightMeters + " m" : "Belirtilmedi")
+        </p>
+        <p>
+            <strong>Yük Ağırlığı:</strong>
+            @(Model.LoadWeightKg.HasValue ? Model.LoadWeightKg + " kg" : "Belirtilmedi")
+        </p>
+        <p><strong>İş Süresi:</strong> @Model.Duration</p>
+
+        <hr />
+
+        <h6>Müşteri Bilgileri</h6>
+        <p><strong>Ad Soyad:</strong> @Model.CustomerName</p>
+        <p><strong>Telefon:</strong> @Model.Phone</p>
+        @if (!string.IsNullOrWhiteSpace(Model.Email))
+        {
+            <p><strong>E-posta:</strong> @Model.Email</p>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.CompanyName))
+        {
+            <p><strong>Firma:</strong> @Model.CompanyName</p>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.Notes))
+        {
+            <hr />
+            <h6>Ek Notlar</h6>
+            <p>@Model.Notes</p>
+        }
+
+        <a asp-action="Index" class="btn btn-secondary mt-3">Teklif listesine dön</a>
+    </div>
+</div>

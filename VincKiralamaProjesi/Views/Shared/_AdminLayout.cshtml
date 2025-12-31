@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SOL MENÜ -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <h6 class="text-muted px-3">Admin Panel</h6>
+
+                    <ul class="nav flex-column mt-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="QuoteRequests" asp-action="Index">
+                                📄 Gelen Teklifler
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="AdminFirms" asp-action="Index">
+                                🏢 Firmalar
+                            </a>
+                        </li>
+
+                        <li class="nav-item mt-3">
+                            <a class="nav-link text-danger" asp-controller="Home" asp-action="Index">
+                                Siteye Dön
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- İÇERİK -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-4">
+                @RenderBody()
+            </main>
+
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

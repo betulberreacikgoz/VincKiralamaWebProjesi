@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VincKiralamaProjesi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/VincKiralamaProjesi.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Üst Menü -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white sticky-top">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="text-warning">VK</span> VinçKiralama
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Navigation aç/kapa">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Cranes" asp-action="Index">Vinçler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Firms" asp-action="Register">Firma Ol</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="FirmAuth" asp-action="Login">Giriş Yap</a>
+                        </li>
+                    </ul>
+                    <div class="d-none d-sm-block">
+                        <a class="btn btn-warning text-dark" asp-controller="Quotes" asp-action="Create">
+                            Teklif Al
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sayfa İçeriği -->
+    @if (ViewData["Title"] as string == "Ana Sayfa")
+    {
+        <main role="main">
+            @RenderBody()
+        </main>
+    }
+    else
+    {
+        <div class="container mt-4">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    }
+
+    <!-- Footer -->
+<footer class="footer-dark mt-5">
+    <div class="container footer-inner py-5">
+        <div class="row g-4 mb-4">
+            <!-- Marka -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="footer-brand-badge me-2">
+                        <span class="fw-bold text-dark">VK</span>
+                    </div>
+                    <span class="fw-semibold">Vinç Kiralama</span>
+                </div>
+                <p class="text-footer-muted mb-3">
+                    Profesyonel vinç kiralama hizmetleri ile projelerinize güvenilir destek.
+                </p>
+                <div class="d-flex gap-2 footer-social">
+                    <a href="#" title="Facebook">
+                        <span class="fw-bold">f</span>
+                    </a>
+                    <a href="#" title="X / Twitter">
+                        <span class="fw-bold">x</span>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <span class="fw-bold">in</span>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <span class="fw-bold">li</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hızlı Bağlantılar -->
+            <div class="col-6 col-lg-3">
+                <h5 class="mb-3">Hızlı Bağlantılar</h5>
+                <ul class="list-unstyled footer-links">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index">
+                            Ana Sayfa
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Cranes" asp-action="Index">
+                            Vinçler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Kategoriler</a>
+                    </li>
+                    <li>
+                        <a href="#">Hakkımızda</a>
+                    </li>
+                    <li>
+                        <a href="#">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Hizmetlerimiz -->
+            <div class="col-6 col-lg-3">
+                <h5 class="mb-3">Hizmetlerimiz</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Sepetli Vinç</a></li>
+                    <li><a href="#">Mobil Vinç</a></li>
+                    <li><a href="#">Kule Vinç</a></li>
+                    <li><a href="#">Operatör Hizmeti</a></li>
+                    <li><a href="#">Bakım &amp; Onarım</a></li>
+                </ul>
+            </div>
+
+            <!-- İletişim -->
+            <div class="col-12 col-lg-3">
+                <h5 class="mb-3">İletişim</h5>
+                <ul class="list-unstyled footer-contact">
+                    <li class="d-flex mb-2">
+                        <span class="me-2">📞</span>
+                        <div>
+                            <div class="text-footer-muted">+90 (212) 123 45 67</div>
+                            <div class="text-footer-muted">+90 (532) 123 45 67</div>
+                        </div>
+                    </li>
+                    <li class="d-flex mb-2">
+                        <span class="me-2">✉️</span>
+                        <span class="text-footer-muted">info@vinckiralama.com</span>
+                    </li>
+                    <li class="d-flex mb-2">
+                        <span class="me-2">📍</span>
+                        <span class="text-footer-muted">İstanbul, Türkiye</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Alt kısım -->
+        <div class="border-top border-secondary pt-3 mt-2">
+            <p class="text-center text-footer-muted mb-0">
+                © 2025 Vinç Kiralama. Tüm hakları saklıdır.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Scriptler -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,48 @@
+@model IEnumerable<VincKiralamaProjesi.Models.Crane>
+@{
+    ViewData["Title"] = "Vinçlerim";
+}
+
+<div class="d-flex justify-content-between align-items-center">
+    <h2>Vinçlerim</h2>
+    <a class="btn btn-success" asp-action="CreateCrane">+ Vinç Ekle</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info mt-3">Henüz vinç eklemediniz.</div>
+}
+else
+{
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Kategori</th>
+                <th>Kapasite (ton)</th>
+                <th>Günlük Fiyat</th>
+                <th>Şehir/İlçe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Category?.Name</td>
+                <td>@c.CapacityTon</td>
+                <td>@c.DailyPrice</td>
+                <td>@c.City @(" / ") @c.District</td>
+                <td class="text-end">
+                    <a asp-action="EditCrane" asp-route-id="@c.Id" class="btn btn-sm btn-primary me-2">Düzenle</a>
+                    <form asp-action="DeleteCrane" method="post" asp-route-id="@c.Id" onsubmit="return confirm('Bu vinci silmek istiyor musunuz?');" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-sm btn-danger" type="submit">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

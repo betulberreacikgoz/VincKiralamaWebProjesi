@@ -1,0 +1,139 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<!-- Hero Carousel -->
+<section class="p-0">
+    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <!-- Slide 1: Genel Vinç / İnşaat -->
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1920" class="d-block w-100" style="object-fit: cover; height: 100%;" alt="Profesyonel Vinç Kiralama">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="hero-title animate__animated animate__fadeInDown">Profesyonel Çözümler</h1>
+                    <p class="hero-subtitle animate__animated animate__fadeInUp">İnşaat, montaj ve ağır taşımacılık projeleriniz için en güvenilir vinç kiralama hizmeti.</p>
+                    <a asp-controller="Quotes" asp-action="Create" class="btn btn-warning btn-lg animate__animated animate__fadeInUp">Hemen Teklif Al</a>
+                </div>
+            </div>
+            <!-- Slide 2: Mobil Vinç -->
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80&w=1920" class="d-block w-100" style="object-fit: cover; height: 100%;" alt="Mobil Vinç Hizmetleri">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="hero-title">Her Yerde Güçlü</h1>
+                    <p class="hero-subtitle">Mobil vinçlerimizle en zorlu arazilerde ve dar alanlarda bile yüksek performans.</p>
+                    <a asp-controller="Cranes" asp-action="Index" class="btn btn-warning btn-lg">Vinçleri İncele</a>
+                </div>
+            </div>
+            <!-- Slide 3: Kule Vinç -->
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=1920" class="d-block w-100" style="object-fit: cover; height: 100%;" alt="Kule Vinç Projeleri">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="hero-title">Yüksek Yapılar İçin</h1>
+                    <p class="hero-subtitle">Büyük konut ve ticari projelerinizde kule vinç çözümleri.</p>
+                    <a asp-controller="Firms" asp-action="Register" class="btn btn-outline-light btn-lg">İş Ortağımız Olun</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Önceki</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sonraki</span>
+        </button>
+    </div>
+</section>
+
+<!-- Kategoriler -->
+<section class="py-5 bg-white">
+    <div class="container py-4">
+        <h2 class="h2 section-title">Hizmet Kategorileri</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <!-- Sepetli Vinç (Manlift/Platform) -->
+                    <img src="~/images/sepetli.jpg" class="card-img-top" alt="Sepetli Vinç" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Sepetli Vinçler</h5>
+                        <p class="text-muted">Dış cephe temizliği, montaj ve bakım işlemleri için güvenli erişim.</p>
+                        <a asp-controller="Cranes" asp-action="Index" asp-route-categoryId="1" class="stretched-link text-warning fw-bold">Detayları Gör &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <!-- Mobil Vinç (Kamyon üstü) -->
+                    <img src="~/images/mobil.jpg" class="card-img-top" alt="Mobil Vinç" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobil Vinçler</h5>
+                        <p class="text-muted">Hızlı kurulum ve yüksek manevra kabiliyeti ile pratik çözümler.</p>
+                        <a asp-controller="Cranes" asp-action="Index" asp-route-categoryId="2" class="stretched-link text-warning fw-bold">Detayları Gör &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <!-- Kule Vinç -->
+                    <img src="~/images/kule.jpg" class="card-img-top" alt="Kule Vinç" style="height: 250px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Kule Vinçler</h5>
+                        <p class="text-muted">Mega projelerin vazgeçilmezi, yüksek kapasiteli kaldırma çözümleri.</p>
+                        <a asp-controller="Cranes" asp-action="Index" asp-route-categoryId="3" class="stretched-link text-warning fw-bold">Detayları Gör &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-light-yellow">
+    <div class="container text-center py-5">
+        <h2 class="mb-3 display-6 fw-bold">Projeniz İçin En Uygun Vinci Bulalım</h2>
+        <p class="lead text-muted mb-4">Uzman ekibimiz ve geniş araç filomuzla hizmetinizdeyiz. Hemen bir talep oluşturun, size özel teklifimizi sunalım.</p>
+        <a asp-controller="Quotes" asp-action="Create" class="btn btn-dark btn-lg px-5">Ücretsiz Teklif Al</a>
+    </div>
+</section>
+
+<!-- Neden Biz -->
+<section class="py-5 bg-white">
+    <div class="container py-4">
+        <h2 class="h2 section-title">Neden Bizi Seçmelisiniz?</h2>
+        <div class="row g-4 text-center mt-2">
+            <div class="col-6 col-md-3">
+                <div class="p-4 rounded-3 bg-light h-100">
+                    <div class="display-4 mb-3">🛡️</div>
+                    <h5 class="fw-bold">Güvenilir</h5>
+                    <p class="small text-muted mb-0">Tüm araçlarımız sigortalı ve bakımlıdır.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-4 rounded-3 bg-light h-100">
+                    <div class="display-4 mb-3">⚡</div>
+                    <h5 class="fw-bold">Hızlı</h5>
+                    <p class="small text-muted mb-0">Acil durumlar için 7/24 destek hattı.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-4 rounded-3 bg-light h-100">
+                    <div class="display-4 mb-3">💰</div>
+                    <h5 class="fw-bold">Ekonomik</h5>
+                    <p class="small text-muted mb-0">Piyasadaki en rekabetçi fiyat garantisi.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-4 rounded-3 bg-light h-100">
+                    <div class="display-4 mb-3">👨‍🔧</div>
+                    <h5 class="fw-bold">Uzman</h5>
+                    <p class="small text-muted mb-0">Sertifikalı ve deneyimli operatör kadrosu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

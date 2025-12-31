@@ -1,0 +1,43 @@
+@model IEnumerable<VincKiralamaProjesi.Models.QuoteRequest>
+@{
+    ViewData["Title"] = "Gelen Teklifler";
+}
+
+<h2>Gelen Teklifler</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info mt-3">Henüz size atanmış teklif yok.</div>
+}
+else
+{
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Müşteri</th>
+                <th>Telefon</th>
+                <th>Şehir/İlçe</th>
+                <th>İş Türü</th>
+                <th>Önerilen Vinç</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var q in Model)
+        {
+            <tr>
+                <td>@q.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@q.CustomerName</td>
+                <td>@q.Phone</td>
+                <td>@q.City @(" / ") @q.District</td>
+                <td>@q.JobType</td>
+                <td>@q.Crane?.Name</td>
+                <td>
+                    <a asp-action="QuoteDetails" asp-route-id="@q.Id" class="btn btn-sm btn-info text-white">Detay</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
