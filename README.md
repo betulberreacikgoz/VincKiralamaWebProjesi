@@ -38,19 +38,21 @@ Sistem, **N-Tier (Katmanlı Mimari)** prensiplerine uygun olarak üç ana temel 
 ## 📸 Ekran Görüntüleri
 
 ### 1. Ana Sayfa ve Karşılama
-![Ana Sayfa] <img width="1919" height="1138" alt="Ekran görüntüsü 2026-01-20 174509" src="https://github.com/user-attachments/assets/8a693292-02a9-458f-8432-7383da9b53d9" />
+<img width="1919" height="1138" alt="Ekran görüntüsü 2026-01-20 174509" src="https://github.com/user-attachments/assets/8a693292-02a9-458f-8432-7383da9b53d9" />
  
 
 ---
 
-### 2. Vinç Katalog ve Listeleme
-![Vinç Listesi] 
+### 2. Admin Paneli
+<img width="1919" height="472" alt="Ekran görüntüsü 2026-01-20 174653" src="https://github.com/user-attachments/assets/66c567d4-8aab-4e97-bafe-18aa5f827a3d" />
+
 
 
 ---
 
-### 3. Kiralama ve Yönetim Paneli
-![Kiralama Paneli] 
+### 3. Kiralama Paneli
+<img width="1919" height="1078" alt="Ekran görüntüsü 2026-01-20 174535" src="https://github.com/user-attachments/assets/0ab126fe-1671-482b-a774-7ee6386580c7" />
+
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
