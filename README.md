@@ -71,7 +71,3 @@ Projeyi yerel ortamınızda test etmek için şu adımları izleyin:
 
 ---
 
-## 📩 İletişim
-
-* **E-posta:** ornek@mail.com
-* **LinkedIn:** [Profil Linkiniz](https://linkedin.com/in/kullaniciadi)
