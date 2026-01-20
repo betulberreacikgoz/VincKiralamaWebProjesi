@@ -9,7 +9,7 @@ Bu proje, iş makineleri ve vinç kiralama süreçlerini dijitalleştirmek, oper
 
 Projenin çalışma mantığını ve özelliklerini aşağıdaki videodan izleyebilirsiniz:
 
-[![Proje Tanıtım Videosu](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_BURAYA/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_BURAYA)
+[![Proje Tanıtım Videosu](https://youtu.be/EG1JVAZNhL0)
 
 ---
 
