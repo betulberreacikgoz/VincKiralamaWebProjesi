@@ -37,7 +37,7 @@ Sistem, **N-Tier (Katmanlı Mimari)** prensiplerine uygun olarak üç ana temel 
 ## 📸 Ekran Görüntüleri
 
 ### 1. Ana Sayfa ve Karşılama
-![Ana Sayfa](ekran_goruntusu_1.png)
+![Ana Sayfa](<img width="1897" height="1032" alt="Image" src="https://github.com/user-attachments/assets/cf3f9e98-feb0-4870-aad0-ee9e87d91aed" />)
 
 ---
 
